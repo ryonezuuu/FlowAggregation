@@ -88,3 +88,4 @@ configure
 toggle
 
 version.cache
+!.waf-tools/
