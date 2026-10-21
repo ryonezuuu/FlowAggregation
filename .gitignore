@@ -3,9 +3,9 @@ ns-3/.lock-waf*
 ns-3/.waf*/
 __pycache__/
 *.pyc
-EOF
 
 
 
 
 
+results/
