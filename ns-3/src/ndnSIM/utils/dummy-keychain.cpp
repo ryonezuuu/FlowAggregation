@@ -42,7 +42,7 @@ static const uint8_t DUMMY_CERT[] =
     "E0pZelPWVs3zMfqQ+8rWG89Kqs1vM0dglLBzlX9Lbim71TyLmaJaMmmBKv8+eQ22"
     "CN71sRZOovl1kKcTHpOm61nD3C1n9GRflFtaMAXE/XU4zMJVzBv6XwQl6PCIc9H2"
     "vjLa28ruVjhMGxqCGhziTC2eR56SUixrnEcbOKT0R+8+0AFnZIjdYglOZPcVwTVB"
-    "G6OxECJOuSoREcd1Ww==;";
+    "G6OxECJOuSoREcd1Ww==";
 
 static const uint8_t DUMMY_SIGNATURE[] =
     {0x17, 0xfd, 0x01, 0x00, 0x93, 0x15, 0x09, 0x49, 0x79, 0x9e, 0xb7, 0x9c, 0xd3, 0xc1, 0xbf, 0x61,
@@ -146,7 +146,7 @@ DummyPib::getKeyBits(const Name& keyName) const
 {
     typedef boost::iostreams::stream<boost::iostreams::array_source> arrayStream;
     arrayStream
-    is(reinterpret_cast<const char*>(DUMMY_CERT), sizeof(DUMMY_CERT));
+    is(reinterpret_cast<const char*>(DUMMY_CERT), sizeof(DUMMY_CERT) - 1);
     auto cert = io::load<Certificate>(is, io::BASE64);
     return cert->getPublicKey();
 }
@@ -193,7 +193,7 @@ DummyPib::getCertificate(const Name& certificateName) const
   if (cert == nullptr) {
     typedef boost::iostreams::stream<boost::iostreams::array_source> arrayStream;
     arrayStream
-    is(reinterpret_cast<const char*>(DUMMY_CERT), sizeof(DUMMY_CERT));
+    is(reinterpret_cast<const char*>(DUMMY_CERT), sizeof(DUMMY_CERT) - 1);
     cert = io::load<Certificate>(is, io::BASE64);
   }
 
@@ -220,7 +220,7 @@ DummyPib::getDefaultCertificateOfKey(const Name& keyName) const
   if (cert == nullptr) {
     typedef boost::iostreams::stream<boost::iostreams::array_source> arrayStream;
     arrayStream
-    is(reinterpret_cast<const char*>(DUMMY_CERT), sizeof(DUMMY_CERT));
+    is(reinterpret_cast<const char*>(DUMMY_CERT), sizeof(DUMMY_CERT) - 1);
     cert = io::load<Certificate>(is, io::BASE64);
   }
 
