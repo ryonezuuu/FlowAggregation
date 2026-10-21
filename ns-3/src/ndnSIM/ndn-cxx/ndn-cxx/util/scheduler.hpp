@@ -29,6 +29,7 @@
 #include "ns3/simulator.h"
 
 #include <set>
+#include <optional>
 
 namespace ndn {
 

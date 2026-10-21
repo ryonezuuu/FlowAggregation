@@ -264,7 +264,7 @@ Strategy::sendData(const Data& data, Face& egress, const shared_ptr<pit::Entry>&
     data2.setTag(pitToken);
     return m_forwarder.onOutgoingData(data2, egress);
   }
-  m_forwarder.onOutgoingData(data, egress);
+  bool result = m_forwarder.onOutgoingData(data, egress);
 
   if (pitEntry->getInRecords().empty()) { // if nothing left, "closing down" the entry
     // set PIT expiry timer to now
@@ -273,6 +273,8 @@ Strategy::sendData(const Data& data, Face& egress, const shared_ptr<pit::Entry>&
     // mark PIT satisfied
     pitEntry->isSatisfied = true;
   }
+
+  return result;
 }
 
 void
